@@ -8,22 +8,23 @@ type User = {
 };
 
 interface PageProps {
-  children: React.ReactNode;
+  children?: React.ReactNode;
 }
 
 export const Page = ({ children }: PageProps) => {
   const [user, setUser] = React.useState<User>();
 
   return (
-    <article>
-      <Header
-        user={user}
-        onLogin={() => setUser({ name: "Jane Doe" })}
-        onLogout={() => setUser(undefined)}
-        onCreateAccount={() => setUser({ name: "Jane Doe" })}
-      />
-
-      <section className="storybook-page">{children}</section>
-    </article>
+    <>
+      <article>
+        <Header
+          user={user}
+          onLogin={() => setUser({ name: "Jane Doe" })}
+          onLogout={() => setUser(undefined)}
+          onCreateAccount={() => setUser({ name: "Jane Doe" })}
+        />
+        <section className="storybook-page">{children}</section>
+      </article>
+    </>
   );
 };

@@ -30,8 +30,11 @@ interface HeaderProps {
     onLogout?: () => void;
     onCreateAccount?: () => void;
 }
-declare const Header: ({ user, onLogin, onLogout, onCreateAccount }: HeaderProps) => React.JSX.Element;
+declare const Header: ({ user, onLogin, onLogout, onCreateAccount, }: HeaderProps) => React.JSX.Element;
 
-declare const Page: React.FC;
+interface PageProps {
+    children?: React.ReactNode;
+}
+declare const Page: ({ children }: PageProps) => React.JSX.Element;
 
 export { Button$1 as Button, Header, Page, Button as StoryButton };
