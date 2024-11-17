@@ -1,8 +1,8 @@
 import React from "react";
-import { Button } from "../buttons/Button";
-import acme from "../assets/acme.svg";
+import { DefaultButton } from "../../buttons/DefaultButton";
+import acme from "../../assets/acme.svg";
 
-import styles from "./Header.module.css";
+import styles from "./DefaultHeader.module.css";
 
 type User = {
   name: string;
@@ -15,7 +15,7 @@ export interface HeaderProps {
   onCreateAccount?: () => void;
 }
 
-export const Header = ({
+export const DefaultHeader = ({
   user,
   onLogin,
   onLogout,
@@ -33,12 +33,12 @@ export const Header = ({
             <span className={styles.welcome}>
               Welcome, <b>{user.name}</b>!
             </span>
-            <Button size="small" onClick={onLogout} label="Log out" />
+            <DefaultButton size="small" onClick={onLogout} label="Log out" />
           </>
         ) : (
           <>
-            <Button size="small" onClick={onLogin} label="Log in" />
-            <Button
+            <DefaultButton size="small" onClick={onLogin} label="Log in" />
+            <DefaultButton
               primary
               size="small"
               onClick={onCreateAccount}

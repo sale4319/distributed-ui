@@ -1,3 +1,3 @@
-export { Button } from "./buttons";
-export { Header } from "./header";
-export { Page } from "./page";
+export * from "./buttons";
+export * from "./header";
+export * from "./page";

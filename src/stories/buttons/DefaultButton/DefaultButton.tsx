@@ -1,6 +1,6 @@
 import React from "react";
 
-import styles from "./Button.module.css";
+import styles from "./DefaultButton.module.css";
 
 export interface ButtonProps {
   /** Is this the principal call to action on the page? */
@@ -16,7 +16,7 @@ export interface ButtonProps {
 }
 
 /** Primary UI component for user interaction */
-export function Button({
+export function DefaultButton({
   primary = false,
   size = "medium",
   backgroundColor,

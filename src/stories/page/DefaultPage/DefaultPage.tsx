@@ -1,7 +1,7 @@
 import React from "react";
 
-import { Header } from "../header";
-import styles from "./Page.module.css";
+import { DefaultHeader } from "../../header/DefaultHeader";
+import styles from "./DefaultPage.module.css";
 
 type User = {
   name: string;
@@ -11,13 +11,13 @@ interface PageProps {
   children?: React.ReactNode;
 }
 
-export const Page = ({ children }: PageProps) => {
+export const DefaultPage = ({ children }: PageProps) => {
   const [user, setUser] = React.useState<User>();
 
   return (
     <>
       <article>
-        <Header
+        <DefaultHeader
           user={user}
           onLogin={() => setUser({ name: "Jane Doe" })}
           onLogout={() => setUser(undefined)}
