@@ -16,7 +16,7 @@ export interface ButtonProps {
 }
 
 /** Primary UI component for user interaction */
-export default function Button({
+export function Button({
   primary = false,
   size = "medium",
   backgroundColor,

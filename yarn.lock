@@ -708,17 +708,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/addon-onboarding@npm:^8.4.4":
-  version: 8.4.4
-  resolution: "@storybook/addon-onboarding@npm:8.4.4"
-  dependencies:
-    react-confetti: "npm:^6.1.0"
-  peerDependencies:
-    storybook: ^8.4.4
-  checksum: 10c0/ef153a5ba99805aebb999b12322e2549573b403fd549ee7e10c2dda39d03d60d213f1c79b86c598d6542d1fa6a3de428c9eb0208081d4eac649b31e555a8f22f
-  languageName: node
-  linkType: hard
-
 "@storybook/addon-outline@npm:8.4.4":
   version: 8.4.4
   resolution: "@storybook/addon-outline@npm:8.4.4"
@@ -2450,7 +2439,6 @@ __metadata:
     "@rollup/plugin-typescript": "npm:^11.0.0"
     "@storybook/addon-essentials": "npm:^8.4.4"
     "@storybook/addon-interactions": "npm:^8.4.4"
-    "@storybook/addon-onboarding": "npm:^8.4.4"
     "@storybook/addon-webpack5-compiler-swc": "npm:^1.0.5"
     "@storybook/blocks": "npm:^8.4.4"
     "@storybook/react": "npm:^8.4.4"

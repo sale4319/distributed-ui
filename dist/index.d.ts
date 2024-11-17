@@ -1,11 +1,5 @@
 import React from 'react';
 
-interface ButtonProps$1 {
-    label: string;
-    action: () => void;
-}
-declare const Button$1: ({ label, action }: ButtonProps$1) => React.JSX.Element;
-
 interface ButtonProps {
     /** Is this the principal call to action on the page? */
     primary?: boolean;
@@ -37,4 +31,4 @@ interface PageProps {
 }
 declare const Page: ({ children }: PageProps) => React.JSX.Element;
 
-export { Button$1 as Button, Header, Page, Button as StoryButton };
+export { Header, Page, Button as StoryButton };

@@ -1,5 +1,5 @@
 import React from "react";
-import Button from "../buttons/StoryButton";
+import { Button } from "../buttons/Button";
 import acme from "../assets/acme.svg";
 
 import styles from "./Header.module.css";
