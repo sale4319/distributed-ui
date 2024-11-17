@@ -14,6 +14,7 @@ Create branch and open pull request
 
 Structural changes need to be properly indexed for rollup to pack them:
 
+```
 ├── src
 │ ├── components
 | │ ├── Button
@@ -23,7 +24,7 @@ Structural changes need to be properly indexed for rollup to pack them:
 │ └── index.ts
 ├── package.json
 └── yarn.lock
-
+```
 After changes are approved run `yarn rbl` to build the current state of the application
 
 Run `npm publish` to make changes available outside
