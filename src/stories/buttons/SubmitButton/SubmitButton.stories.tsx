@@ -1,32 +1,44 @@
-import React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
 
 import { SubmitButton } from "./SubmitButton";
 
-const meta: Meta<typeof SubmitButton> = {
+const meta = {
   title: "Buttons/SubmitButton",
   component: SubmitButton,
   parameters: {
     layout: "centered",
   },
   tags: ["autodocs"],
-};
+} as Meta<typeof SubmitButton>;
 
 export default meta;
-type Story = StoryObj<typeof SubmitButton>;
+type Story = StoryObj<typeof meta>;
 
-export const Primary: Story = {
-  render: () => <SubmitButton submit={true} label="Button" />,
+export const Submit: Story = {
+  args: {
+    label: "Submit",
+    submit: true,
+  },
 };
 
-export const Secondary: Story = {
-  render: () => <SubmitButton label="Button" />,
+export const FunSubmit: Story = {
+  args: {
+    label: "Fun",
+  },
 };
 
 export const Large: Story = {
-  render: () => <SubmitButton label="Button" submit={true} size="large" />,
+  args: {
+    label: "Large",
+    submit: true,
+    size: "large",
+  },
 };
 
 export const Small: Story = {
-  render: () => <SubmitButton label="Button" submit={true} size="small" />,
+  args: {
+    label: "Small",
+    submit: true,
+    size: "small",
+  },
 };
