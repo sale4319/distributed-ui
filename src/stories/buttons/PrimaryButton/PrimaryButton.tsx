@@ -19,6 +19,7 @@ export const PrimaryButton = ({
   mode = "fill",
   isLocked,
   label,
+  ...props
 }: PrimaryButtonProps) => {
   const toggleColor = primary
     ? styles.fill
@@ -29,6 +30,7 @@ export const PrimaryButton = ({
     <button
       type={buttonType}
       className={[styles.primaryButton, styles[size], toggleColor].join(" ")}
+      {...props}
     >
       {isLocked ? "Locked" : isLocked === undefined ? label : "Unlocked"}
     </button>

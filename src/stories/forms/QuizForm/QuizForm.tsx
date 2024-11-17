@@ -47,13 +47,13 @@ const Question = ({ question, setAnswerStatus }: QuestionProps) => {
     let classes: string[] = [];
     if (selectedAnswerIndex !== null) {
       if (selectedAnswerIndex === index) {
-        classes.push("selected");
+        classes.push(styles.selected);
       }
       if (index === question.correctAnswerIndex) {
         if (selectedAnswerIndex === index) {
-          classes.push("correct");
+          classes.push(styles.correct);
         } else {
-          classes.push("incorrect");
+          classes.push(styles.incorrect);
         }
       }
     }
