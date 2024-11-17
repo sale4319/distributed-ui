@@ -2,16 +2,16 @@ import type { Meta, StoryObj } from "@storybook/react";
 
 import { UnlockToolTip } from "./UnlockToolTip";
 
-const meta = {
+const meta: Meta<typeof UnlockToolTip> = {
   title: "ToolTips/UnlockToolTip",
   component: UnlockToolTip,
   parameters: {
     layout: "centered",
   },
   tags: ["autodocs"],
-} as Meta<typeof UnlockToolTip>;
+};
 
 export default meta;
-type Story = StoryObj<typeof meta>;
+type Story = StoryObj<typeof UnlockToolTip>;
 
 export const Default: Story = {};

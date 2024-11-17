@@ -1,5 +1,5 @@
 import React, { useState, useEffect, Fragment } from "react";
-import { QuizFormMessages } from "../../../../Messages";
+import { QuizFormMessages } from "../../utils/Messages";
 import { PrimaryButton } from "../../buttons";
 
 import styles from "./QuizForm.module.css";

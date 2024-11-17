@@ -1,7 +1,7 @@
 import React, { ChangeEvent, FormEvent, useState, useEffect } from "react";
 import { QuestionIconToolTip } from "../../tool-tips";
 import { PrimaryButton } from "../../buttons";
-import { QuestionFormMessages, DefaultMessages } from "../../../../Messages";
+import { QuestionFormMessages, DefaultMessages } from "../../utils/Messages";
 
 import styles from "./QuestionForm.module.css";
 
