@@ -3,38 +3,64 @@ import type { Meta, StoryObj } from "@storybook/react";
 
 import { PrimaryButton } from "./PrimaryButton";
 
-const meta: Meta<typeof PrimaryButton> = {
+const meta = {
   title: "Buttons/PrimaryButton",
   component: PrimaryButton,
-};
+  parameters: {
+    layout: "centered",
+  },
+  tags: ["autodocs"],
+} as Meta<typeof PrimaryButton>;
 
 export default meta;
-type Story = StoryObj<typeof PrimaryButton>;
+type Story = StoryObj<typeof meta>;
 
 export const Fill: Story = {
-  render: () => <PrimaryButton primary label="Fill" mode="fill" />,
+  args: {
+    primary: true,
+    label: "Fill",
+    mode: "fill",
+  },
 };
 
 export const Pulse: Story = {
-  render: () => <PrimaryButton label="Pulse" mode="pulse" />,
+  args: {
+    label: "Pulse",
+    mode: "pulse",
+  },
 };
 
 export const Close: Story = {
-  render: () => <PrimaryButton label="Close" mode="close" />,
+  args: {
+    label: "Close",
+    mode: "close",
+  },
 };
 
 export const Raise: Story = {
-  render: () => <PrimaryButton label="Raise" mode="raise" />,
+  args: {
+    label: "Raise",
+    mode: "raise",
+  },
 };
 
 export const Up: Story = {
-  render: () => <PrimaryButton label="Fill Up" mode="up" />,
+  args: {
+    label: "Fill Up",
+    mode: "up",
+  },
 };
 
 export const Slide: Story = {
-  render: () => <PrimaryButton label="Slide" mode="slide" />,
+  args: {
+    label: "Slide",
+    mode: "slide",
+  },
 };
 
 export const Offset: Story = {
-  render: () => <PrimaryButton label="Offset" mode="offset" />,
+  args: {
+    label: "Offset",
+    mode: "offset",
+  },
 };
