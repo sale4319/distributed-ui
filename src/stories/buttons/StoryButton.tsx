@@ -1,6 +1,6 @@
 import React from "react";
 
-import "./StoryButton.css";
+import styles from "./StoryButton.module.css";
 
 export interface ButtonProps {
   /** Is this the principal call to action on the page? */
@@ -24,14 +24,13 @@ export default function Button({
   ...props
 }: ButtonProps) {
   const mode = primary
-    ? "storybook-button--primary"
-    : "storybook-button--secondary";
+    ? styles.storybookButtonPrimary
+    : styles.storybookButtonSecondary;
+
   return (
     <button
       type="button"
-      className={["storybook-button", `storybook-button--${size}`, mode].join(
-        " "
-      )}
+      className={[styles.storybookButton, styles[`${size}`], mode].join(" ")}
       style={{ backgroundColor }}
       {...props}
     >

@@ -1,7 +1,7 @@
 import React from "react";
 
 import { Header } from "../header";
-import "./page.css";
+import styles from "./Page.module.css";
 
 type User = {
   name: string;
@@ -23,7 +23,7 @@ export const Page = ({ children }: PageProps) => {
           onLogout={() => setUser(undefined)}
           onCreateAccount={() => setUser({ name: "Jane Doe" })}
         />
-        <section className="storybook-page">{children}</section>
+        <section className={styles.storybookPage}>{children}</section>
       </article>
     </>
   );
