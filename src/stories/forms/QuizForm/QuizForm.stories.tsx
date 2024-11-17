@@ -7,7 +7,7 @@ const meta = {
   title: "Forms/QuizForm",
   component: Quiz,
   parameters: {
-    layout: "fullscreen",
+    layout: "centered",
   },
   tags: ["autodocs"],
 } as Meta<typeof Quiz>;

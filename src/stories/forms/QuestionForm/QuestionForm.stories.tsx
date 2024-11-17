@@ -7,7 +7,7 @@ const meta = {
   title: "Forms/QuestionForm",
   component: QuestionForm,
   parameters: {
-    layout: "fullscreen",
+    layout: "centered",
   },
   tags: ["autodocs"],
 } as Meta<typeof QuestionForm>;

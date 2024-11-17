@@ -1,7 +1,6 @@
-import React from "react";
-// import Tippy from "@tippyjs/react";
+import React, { useState } from "react";
 import QuestionIcon from "../../assets/question-icon.svg";
-import "./QuestionIconToolTip.css";
+import styles from "./QuestionIconToolTip.module.css";
 
 interface QuestionIconToolTipProps {
   submit?: boolean;
@@ -16,15 +15,27 @@ export const QuestionIconToolTip = ({
   content = "Tooltip text",
   ...props
 }: QuestionIconToolTipProps) => {
+  const [isTooltipVisible, setTooltipVisible] = useState(false);
+
+  const handleMouseEnter = () => setTooltipVisible(true);
+  const handleMouseLeave = () => setTooltipVisible(false);
+
   return (
-    <div className="question-tooltip" content={content}>
-      <button type="button" className="question-button" {...props}>
+    <div
+      className={styles.questionTooltipContainer}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
+      <button type="button" className={styles.questionButton} {...props}>
         <img
           src={QuestionIcon}
-          className={["question-icon", `question-icon--${size}`].join(" ")}
+          className={[styles.questionIcon, styles[size]].join(" ")}
           alt="hint"
         />
       </button>
+      {isTooltipVisible && (
+        <div className={styles.questionTooltip}>{content}</div>
+      )}
     </div>
   );
 };

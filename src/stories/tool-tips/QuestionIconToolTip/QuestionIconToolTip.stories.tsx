@@ -1,16 +1,17 @@
-import React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
 
 import { QuestionIconToolTip } from "./QuestionIconToolTip";
 
-const meta: Meta<typeof QuestionIconToolTip> = {
+const meta = {
   title: "ToolTips/QuestionIconToolTip",
   component: QuestionIconToolTip,
-};
+  parameters: {
+    layout: "centered",
+  },
+  tags: ["autodocs"],
+} as Meta<typeof QuestionIconToolTip>;
 
 export default meta;
-type Story = StoryObj<typeof QuestionIconToolTip>;
+type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {
-  render: () => <QuestionIconToolTip />,
-};
+export const Default: Story = {};

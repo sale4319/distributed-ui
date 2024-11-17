@@ -1,7 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 
-import "./UnlockToolTip.css";
-// import Tippy from "@tippyjs/react";
+import styles from "./UnlockToolTip.module.css";
 
 interface UnlockToolTipProps {
   submit?: boolean;
@@ -16,9 +15,23 @@ export const UnlockToolTip = ({
   content = "Tooltip text",
   ...props
 }: UnlockToolTipProps) => {
+  const [isTooltipVisible, setTooltipVisible] = useState(false);
+
+  const handleMouseEnter = () => setTooltipVisible(true);
+  const handleMouseLeave = () => setTooltipVisible(false);
   return (
-    <div className="question-tooltip" content={content}>
-      <button type="button" className="tooltip-button" {...props}></button>
+    <div
+      className={styles.tooltipContainer}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
+      <button
+        type="button"
+        className={styles.tooltipButton}
+        {...props}
+      ></button>
+
+      {isTooltipVisible && <div className={styles.tooltip}>{content}</div>}
     </div>
   );
 };

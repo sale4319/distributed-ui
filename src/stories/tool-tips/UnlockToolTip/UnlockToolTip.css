@@ -1,9 +1,0 @@
-.tooltip-button {
-  background: transparent;
-  padding: 0px;
-  border: none;
-}
-
-.tooltip-button::selection {
-  background: transparent;
-}

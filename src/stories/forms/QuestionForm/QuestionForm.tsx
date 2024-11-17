@@ -1,15 +1,18 @@
-import React, { ChangeEvent, FormEvent } from "react";
-
-import { useState, useEffect } from "react";
+import React, { ChangeEvent, FormEvent, useState, useEffect } from "react";
 import { QuestionIconToolTip } from "../../tool-tips";
 import { PrimaryButton } from "../../buttons";
 import { QuestionFormMessages, DefaultMessages } from "../../../../Messages";
-// import { SecretAnswers } from "../../../PrivateRoutes";
-import "./QuestionForm.css";
 
-type Errors = {
+import styles from "./QuestionForm.module.css";
+
+type FormValues = {
   answerOne: string;
   answerTwo: string;
+};
+
+type FormErrors = {
+  answerOne?: string;
+  answerTwo?: string;
 };
 
 type QuestionFormProps = {
@@ -34,14 +37,14 @@ export const QuestionForm = ({
   secondHint = "What is your second hint?",
   secondPlaceholder = "What is your second placeholder?",
   successMessage = "What is your success message?",
-  ...props
 }: QuestionFormProps) => {
-  const intialValues: Errors = { answerOne: "", answerTwo: "" };
+  const initialValues: FormValues = { answerOne: "", answerTwo: "" };
 
-  const [formValues, setFormValues] = useState(intialValues);
-  const [formErrors, setFormErrors] = useState<any>({});
-  const [touched, setTouched] = useState<any>({});
-  const [isTouched, setIsTouched] = useState<any>({});
+  const [formValues, setFormValues] = useState<FormValues>(initialValues);
+  const [formErrors, setFormErrors] = useState<FormErrors>({});
+  const [touched, setTouched] = useState<{
+    [key in keyof FormValues]?: boolean;
+  }>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const submit = () => {
@@ -51,49 +54,46 @@ export const QuestionForm = ({
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormValues({ ...formValues, [name]: value });
-    setTouched(true);
-    setIsTouched(true);
+    setTouched({ ...touched, [name]: true });
   };
 
-  const handleOnBlur = () => {
-    setTouched(validate(formValues));
-    setFormErrors(validate(true));
-  };
-
-  const handleOnBlurSeperate = () => {
-    setIsTouched(validate(formValues));
-    setFormErrors(validate(true));
+  const handleOnBlur = (e: ChangeEvent<HTMLInputElement>) => {
+    const { name } = e.target;
+    setTouched({ ...touched, [name]: true });
+    setFormErrors(validate(formValues));
   };
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setFormErrors(validate(formValues));
-    setTouched(validate(formValues));
-    setIsTouched(validate(formValues));
-    setIsSubmitting(true);
+    const errors = validate(formValues);
+    setFormErrors(errors);
+    setTouched({ answerOne: true, answerTwo: true });
+    if (Object.keys(errors).length === 0) {
+      setIsSubmitting(true);
+    }
   };
 
-  const validate = (values: any) => {
-    let errors: any = {};
-    const a1 = `React`;
-    const a2 = `React`;
+  const validate = (values: FormValues): FormErrors => {
+    const errors: FormErrors = {};
+    const a1 = "React";
+    const a2 = "React";
     const regex1 = RegExp("^$|^" + a1 + "|^([FG]?\\d{5}|\\d{5}[AB])$");
     const regex2 = RegExp("^$|^" + a2 + "|^([FG]?\\d{5}|\\d{5}[AB])$");
 
     if (!values.answerOne) {
-      errors.answerOne = `${QuestionFormMessages.REQUIRED}`;
+      errors.answerOne = QuestionFormMessages.REQUIRED;
     } else if (values.answerOne.length < 4) {
-      errors.answerOne = `${QuestionFormMessages.SHORT}`;
+      errors.answerOne = QuestionFormMessages.SHORT;
     } else if (!regex1.test(values.answerOne)) {
-      errors.answerOne = `${QuestionFormMessages.FIRST_Q_WRONG}`;
+      errors.answerOne = QuestionFormMessages.FIRST_Q_WRONG;
     }
 
     if (!values.answerTwo) {
-      errors.answerTwo = `${QuestionFormMessages.REQUIRED}`;
+      errors.answerTwo = QuestionFormMessages.REQUIRED;
     } else if (values.answerTwo.length < 4) {
-      errors.answerTwo = `${QuestionFormMessages.SHORT}`;
+      errors.answerTwo = QuestionFormMessages.SHORT;
     } else if (!regex2.test(values.answerTwo)) {
-      errors.answerTwo = `${QuestionFormMessages.SECOND_Q_WRONG}`;
+      errors.answerTwo = QuestionFormMessages.SECOND_Q_WRONG;
     }
     return errors;
   };
@@ -103,17 +103,17 @@ export const QuestionForm = ({
       submit();
       if (handleUnlock) handleUnlock();
     }
-  }, [formErrors]);
+  }, [formErrors, isSubmitting, handleUnlock]);
 
   return (
-    <div className="form-container">
+    <div className={styles.formContainer}>
       {Object.keys(formErrors).length === 0 && isSubmitting && (
-        <span className="success-message">{successMessage}</span>
+        <span className={styles.successMessage}>{successMessage}</span>
       )}
       <form onSubmit={handleSubmit} noValidate>
-        <div className="form-row">
+        <div className={styles.formRow}>
           <label
-            className={["form-label", "form-label--light"].join(" ")}
+            className={[styles.formLabel, styles["light"]].join(" ")}
             htmlFor="answerOne"
           >
             {firstQuestion}
@@ -127,21 +127,20 @@ export const QuestionForm = ({
             value={formValues.answerOne}
             onBlur={handleOnBlur}
             onChange={handleChange}
-            className={touched.answerOne ? "form-input-error" : "form-input"}
+            className={
+              touched.answerOne && formErrors.answerOne
+                ? styles.formInputError
+                : styles.formInput
+            }
           />
-
-          <span className="error">
-            {formErrors.answerOne && touched.answerOne ? (
-              formErrors.answerOne
-            ) : (
-              <br />
-            )}
-          </span>
+          {touched.answerOne && formErrors.answerOne && (
+            <span className={styles.error}>{formErrors.answerOne}</span>
+          )}
         </div>
 
-        <div className="form-row">
+        <div className={styles.formRow}>
           <label
-            className={["form-label", "form-label--light"].join(" ")}
+            className={[styles.formLabel, styles["light"]].join(" ")}
             htmlFor="answerTwo"
           >
             {secondQuestion}
@@ -153,18 +152,17 @@ export const QuestionForm = ({
             name="answerTwo"
             id="answerTwo"
             value={formValues.answerTwo}
-            onBlur={handleOnBlurSeperate}
+            onBlur={handleOnBlur}
             onChange={handleChange}
-            className={isTouched.answerTwo ? "form-input-error" : "form-input"}
+            className={
+              touched.answerTwo && formErrors.answerTwo
+                ? styles.formInputError
+                : styles.formInput
+            }
           />
-
-          <span className="error">
-            {formErrors.answerTwo && isTouched.answerTwo ? (
-              formErrors.answerTwo
-            ) : (
-              <br />
-            )}
-          </span>
+          {touched.answerTwo && formErrors.answerTwo && (
+            <span className={styles.error}>{formErrors.answerTwo}</span>
+          )}
         </div>
         <PrimaryButton
           size={"medium"}

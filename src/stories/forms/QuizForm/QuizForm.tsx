@@ -2,9 +2,8 @@ import React, { useState, useEffect, Fragment } from "react";
 import { QuizFormMessages } from "../../../../Messages";
 import { PrimaryButton } from "../../buttons";
 
-import "./QuizForm.css";
+import styles from "./QuizForm.module.css";
 
-// Types for props
 type QuizProps = {
   questions?: {
     question: string;
@@ -29,7 +28,7 @@ type ProgressBarProps = {
 };
 
 // Question Component
-const Question: React.FC<QuestionProps> = ({ question, setAnswerStatus }) => {
+const Question = ({ question, setAnswerStatus }: QuestionProps) => {
   const [selectedAnswerIndex, setSelectedAnswerIndex] = useState<number | null>(
     null
   );
@@ -62,18 +61,18 @@ const Question: React.FC<QuestionProps> = ({ question, setAnswerStatus }) => {
   };
 
   return (
-    <div className="question">
-      <div className="questionText">{question.question}</div>
-      <div className="answers">
+    <div className={styles.question}>
+      <div className={styles.questionText}>{question.question}</div>
+      <div className={styles.answers}>
         {question.answers.map((answer, index) => (
           <div
             key={index}
-            className={`answer ${getClasses(index)}`}
+            className={`${styles.answer} ${getClasses(index)}`}
             onClick={() =>
               selectedAnswerIndex === null && setSelectedAnswerIndex(index)
             }
           >
-            <span className="answer-text">{answer}</span>
+            <span className={styles.answerText}>{answer}</span>
           </div>
         ))}
       </div>
@@ -89,12 +88,15 @@ const ProgressBar: React.FC<ProgressBarProps> = ({
   const progressPercentage = (currentQuestionIndex / totalQuestionsCount) * 100;
 
   return (
-    <div className="progressBar">
-      <div className="text">
+    <div className={styles.progressBar}>
+      <div className={styles.text}>
         {currentQuestionIndex} answered (
         {totalQuestionsCount - currentQuestionIndex} remaining)
       </div>
-      <div className="inner" style={{ width: `${progressPercentage}%` }} />
+      <div
+        className={styles.inner}
+        style={{ width: `${progressPercentage}%` }}
+      />
     </div>
   );
 };
@@ -132,7 +134,7 @@ export const Quiz = ({ questions, handleUnlock }: QuizProps) => {
 
   if (questionIndex === null) {
     return (
-      <div className={["quiz", "quiz--light"].join(" ")}>
+      <div className={[styles.quiz, styles["light"]].join(" ")}>
         <h1>{QuizFormMessages.TITLE}</h1>
         <p>{QuizFormMessages.DESCRIPTION}</p>
         <p>
@@ -148,7 +150,7 @@ export const Quiz = ({ questions, handleUnlock }: QuizProps) => {
   }
 
   return (
-    <div className={["quiz", "quiz--light"].join(" ")}>
+    <div className={[styles.quiz, styles["light"]].join(" ")}>
       {quizComplete ? (
         <Fragment>
           <h1>{QuizFormMessages.TITLE_COMPLETE}</h1>
