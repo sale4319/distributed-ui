@@ -1,13 +1,7 @@
-/// <reference types="react" />
-import type { StoryObj } from '@storybook/react';
-declare const meta: {
-    title: string;
-    component: import("react").FC<{}>;
-    parameters: {
-        layout: string;
-    };
-};
+import type { Meta, StoryObj } from "@storybook/react";
+import { Page } from "./Page";
+declare const meta: Meta<typeof Page>;
 export default meta;
-type Story = StoryObj<typeof meta>;
+type Story = StoryObj<typeof Page>;
 export declare const LoggedOut: Story;
 export declare const LoggedIn: Story;
