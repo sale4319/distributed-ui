@@ -10,7 +10,7 @@ interface PrimaryButtonProps {
   isLocked?: boolean;
   label?: string;
   onClick?: () => void;
-  href: string;
+  href?: string;
 }
 
 export const PrimaryButton = ({
