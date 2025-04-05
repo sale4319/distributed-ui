@@ -4,17 +4,13 @@ import { PrimaryButton } from "../../buttons";
 import { QuestionFormMessages, DefaultMessages } from "../../utils/Messages";
 
 import styles from "./QuestionForm.module.css";
+interface FormValues {
+  [key: string]: string;
+}
 
-type FormValues = {
-  answerOne: string;
-  answerTwo: string;
-};
-
-type FormErrors = {
-  answerOne?: string;
-  answerTwo?: string;
-};
-
+interface FormErrors {
+  [key: string]: string;
+}
 type QuestionFormProps = {
   questionIconSize?: "small" | "medium" | "large";
   handleUnlock?: () => void;
@@ -39,7 +35,6 @@ export const QuestionForm = ({
   successMessage = "What is your success message?",
 }: QuestionFormProps) => {
   const initialValues: FormValues = { answerOne: "", answerTwo: "" };
-
   const [formValues, setFormValues] = useState<FormValues>(initialValues);
   const [formErrors, setFormErrors] = useState<FormErrors>({});
   const [touched, setTouched] = useState<{

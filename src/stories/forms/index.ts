@@ -1,2 +1,2 @@
 export { QuestionForm } from "./QuestionForm";
-export { Quiz } from "./QuizForm";
+export { QuizForm } from "./QuizForm";

@@ -102,7 +102,7 @@ const ProgressBar: React.FC<ProgressBarProps> = ({
 };
 
 // Quiz Component
-export const Quiz = ({ questions, handleUnlock }: QuizProps) => {
+const QuizForm: React.FC<QuizProps> = ({ questions = [], handleUnlock }) => {
   const [questionIndex, setQuestionIndex] = useState<number | null>(null);
   const [answerStatus, setAnswerStatus] = useState<boolean | null>(null);
   const [correctAnswerCount, setCorrectAnswerCount] = useState<number>(0);
@@ -207,3 +207,5 @@ export const Quiz = ({ questions, handleUnlock }: QuizProps) => {
     </div>
   );
 };
+
+export default QuizForm;
