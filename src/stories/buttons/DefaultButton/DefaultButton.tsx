@@ -13,7 +13,6 @@ export interface ButtonProps {
   label: string;
   /** Optional click handler */
   onClick?: () => void;
-  href?: string;
 }
 
 /** Primary UI component for user interaction */
@@ -22,7 +21,6 @@ export function DefaultButton({
   size = "medium",
   backgroundColor,
   label,
-  href,
   ...props
 }: ButtonProps) {
   const mode = primary
@@ -30,14 +28,13 @@ export function DefaultButton({
     : styles.storybookButtonSecondary;
 
   return (
-    <a
+    <button
       type="button"
-      href={href}
       className={[styles.storybookButton, styles[`${size}`], mode].join(" ")}
       style={{ backgroundColor }}
       {...props}
     >
       {label}
-    </a>
+    </button>
   );
 }
