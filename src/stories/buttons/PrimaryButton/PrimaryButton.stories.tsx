@@ -1,19 +1,18 @@
-import React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
-
 import { PrimaryButton } from "./PrimaryButton";
 
-const meta = {
+const meta: Meta<typeof PrimaryButton> = {
   title: "Buttons/PrimaryButton",
   component: PrimaryButton,
   parameters: {
     layout: "centered",
   },
   tags: ["autodocs"],
-} as Meta<typeof PrimaryButton>;
+};
 
 export default meta;
-type Story = StoryObj<typeof meta>;
+
+type Story = StoryObj<typeof PrimaryButton>;
 
 export const Fill: Story = {
   args: {
