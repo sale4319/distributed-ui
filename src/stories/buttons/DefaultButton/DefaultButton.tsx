@@ -13,7 +13,7 @@ export interface ButtonProps {
   label: string;
   /** Optional click handler */
   onClick?: () => void;
-  href: string;
+  href?: string;
 }
 
 /** Primary UI component for user interaction */
