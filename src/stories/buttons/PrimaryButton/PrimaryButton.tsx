@@ -10,6 +10,7 @@ interface PrimaryButtonProps {
   isLocked?: boolean;
   label?: string;
   onClick?: () => void;
+  href: string;
 }
 
 export const PrimaryButton = ({
@@ -19,6 +20,7 @@ export const PrimaryButton = ({
   mode = "fill",
   isLocked,
   label,
+  href,
   ...props
 }: PrimaryButtonProps) => {
   const toggleColor = primary
@@ -27,12 +29,13 @@ export const PrimaryButton = ({
     ? styles[mode]
     : styles.pulse;
   return (
-    <button
+    <a
+      href={href}
       type={buttonType}
       className={[styles.primaryButton, styles[size], toggleColor].join(" ")}
       {...props}
     >
       {isLocked ? "Locked" : isLocked === undefined ? label : "Unlocked"}
-    </button>
+    </a>
   );
 };
